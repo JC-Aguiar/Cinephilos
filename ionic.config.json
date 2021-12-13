@@ -1,0 +1,8 @@
+{
+  "name": "gma-vintage",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "16eadd16"
+}

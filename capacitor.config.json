@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "gma-vintage",
+	"webDir": "build",
+	"bundledWebRuntime": false
+}
