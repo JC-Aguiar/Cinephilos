@@ -10,6 +10,7 @@ import {
     IonNote,
     IonAccordionGroup,
     IonAccordion,
+    IonButton,
 } from "@ionic/react";
 
 import { useLocation } from "react-router-dom";
@@ -36,6 +37,7 @@ import {
 import "./Menu.css";
 import React, { useRef, useState } from "react";
 import { endpoint } from "../TMDB";
+import Acount from "./Acount";
 
 interface AppPage {
     url: string;
@@ -102,34 +104,32 @@ const userRecents: MovieSumary[] = [
         name: "Fight Club",
         icon: "Fight Club",
         genre: [28],
-
     }
 ];
 
-const Menu: React.FC = () => {
+function Menu(props: any) {
+
     const location = useLocation();
 
     const loadMovie = () => endpoint(28);
 
-    const iconColor = "#ffe365";
-
-    const accordionGroupRef = useRef(null);
-
     return (
         <IonMenu contentId="main" type="overlay" id="menu">
-            <IonContent >
-                <IonItem>
-                    <IonLabel>
-                        <IonListHeader className="userName">JC-AGUIAR</IonListHeader>
-                        <IonNote>jcostalaguiar@gmail.com</IonNote>
-                    </IonLabel>
-                    <IonIcon slot="start" md={personCircleOutline} ios={personCircleSharp} color="dark" className="userAvatar"/>
-                </IonItem>
+            <IonContent>
+                <Acount userLogin={props.userLogin} />
                 {appPages.map((appPage, index) => {
                     return (
-                        <IonMenuToggle key={index} autoHide={false} className="menuItem">
+                        <IonMenuToggle
+                            key={index}
+                            autoHide={false}
+                            className="menu-panel"
+                        >
                             <IonItem
-                                className={location.pathname === appPage.url ? "selected" : ""}
+                                className={
+                                    location.pathname === appPage.url
+                                        ? "selected"
+                                        : ""
+                                }
                                 routerLink={appPage.url}
                                 routerDirection="none"
                                 lines="none"
@@ -140,6 +140,7 @@ const Menu: React.FC = () => {
                                     ios={appPage.iosIcon}
                                     md={appPage.mdIcon}
                                     color="#"
+                                    className="ion-padding-start"
                                 />
                                 <IonLabel>{appPage.title}</IonLabel>
                             </IonItem>
@@ -147,21 +148,27 @@ const Menu: React.FC = () => {
                     );
                 })}
                 <IonAccordionGroup>
-                    <IonAccordion value="recents" className="menuItem">
+                    <IonAccordion value="recents" className="menu-panel" toggleIcon="none">
                         <IonItem slot="header">
-                            <IonIcon slot="start" ios={timeSharp} md={timeOutline} color="#"/>
+                            <IonIcon
+                                slot="start"
+                                ios={timeSharp}
+                                md={timeOutline}
+                                color="#"
+                                className="ion-padding-start"
+                            />
                             <IonLabel>Recentes</IonLabel>
                         </IonItem>
-                        <IonList slot="content">
-                            <ol>
-                                {userRecents.map((movieSumary, index) => {
-                                    return(
-                                        <IonItem key={index}>
-                                            <li><IonLabel>{userRecents[index].name}</IonLabel></li>
-                                        </IonItem>
-                                    );
-                                })}
-                            </ol>
+                        <IonList slot="content" lines="none">
+                            {userRecents.map((movieSumary, index) => {
+                                return (
+                                    <IonItem key={index}>
+                                        <IonButton fill="clear" color="warning" className="recent-item">
+                                            {movieSumary.name}
+                                        </IonButton>
+                                    </IonItem>
+                                );
+                            })}
                         </IonList>
                     </IonAccordion>
                 </IonAccordionGroup>

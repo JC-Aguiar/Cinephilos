@@ -25,12 +25,40 @@ import './theme/variables.css';
 
 setupIonicReact();
 
+export interface UserInterface {
+    email: string;
+    name: string;
+    picture: string;
+    profile: UserProfileEnum;
+}
+
+export enum UserProfileEnum {
+    Visitante,
+    Usuário,
+    Convidado,
+    Criança,
+}
+
+// const user: UserInterface = {
+//     email: "jcostalaguiar@gmail.com",
+//     name: "JC Aguiar",
+//     picture: "https://avatars.githubusercontent.com/u/78619372?v=4",
+//     profile: UserProfileEnum.Usuário,
+// };
+
+const user: UserInterface = {
+    email: "",
+    name: "",
+    picture: "",
+    profile: UserProfileEnum.Visitante,
+};
+
 const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu />
+          <Menu userLogin={user} />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
               <Redirect to="/movies/all" />

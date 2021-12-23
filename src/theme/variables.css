@@ -236,7 +236,7 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 
-  .menuItem {
+  .menu-panel {
     --ion-item-background: transparent !important;
     background-color:transparent !important;
   }
@@ -259,9 +259,15 @@ http://ionicframework.com/docs/theming/ */
       --color: #ffe365;
     }
 
-    .userName {
+    .user-name {
         color: white;
         font-size: 200%;
+    }
+
+    .recent-item {
+        margin-top: 0px;
+        padding-top: 0px;
+        padding-left: 64px;
     }
 
     ion-icon.userAvatar {

@@ -1,0 +1,9 @@
+.menu-login {
+    padding-left: 0px;
+    margin-left: -10px;
+}
+.welcome {
+    color: white;
+    font-size: calc(80% + 5px);
+    padding-left: 15px;
+}
