@@ -12,9 +12,8 @@ function Login(props: any) {
 
     return (
         <>
-            <Avatar picture={null} />
             <IonGrid className="menu-login">
-                <IonRow className="ion-text-start">
+                <IonRow className="ion-text-center">
                     <IonCol className="welcome">
                         <IonLabel>Bem vindo visitante</IonLabel>
                     </IonCol>

@@ -1,4 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonFab, IonFabButton, IonGrid, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonRow } from "@ionic/react";
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonFab, IonFabButton, IonGrid, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonRow, IonText } from "@ionic/react";
 import React, { useState } from "react";
 import "./LoginModal.css";
 
@@ -12,21 +12,17 @@ function LoginModal(props: any) {
                 <IonRow className="justify-content-center">
                     <IonCol>
                         <IonButton
-                            className="session-buttons"
                             fill="clear"
-                            color="secondary"
                             onClick={() => setShowModal(true)}
                         >
-                            Login
+                            <IonText className="session-buttons">Login</IonText>
                         </IonButton>
                     </IonCol>
                     <IonCol>
-                        <IonButton
-                            className="session-buttons"
-                            fill="clear"
-                            color="secondary"
-                        >
-                            Se Cadastre
+                        <IonButton fill="clear">
+                            <IonText className="session-buttons">
+                                Se Cadastre
+                            </IonText>
                         </IonButton>
                     </IonCol>
                 </IonRow>
@@ -40,7 +36,7 @@ function LoginModal(props: any) {
                 <IonCard className="card-login">
                     <IonCardHeader className="ion-padding-bottom">
                         <IonCardTitle className="ion-text-center login-title">
-                            <IonLabel color="medium">
+                            <IonLabel color="#">
                                 <strong>INICIANDO SESSÃO</strong>
                             </IonLabel>
                         </IonCardTitle>
@@ -56,50 +52,52 @@ function LoginModal(props: any) {
                     </IonCardHeader>
                     <IonCardContent className="ion-padding-horizontal">
                         <IonGrid>
-                            <IonRow className="ion-padding-horizontal">
+                            <IonRow>
                                 <IonCol>
-                                    <IonItem className="login-input">
-                                        <IonLabel color="medium">
+                                    <IonItem>
+                                        <IonText
+                                            color="medium"
+                                            className="login-input"
+                                        >
                                             E-mail
-                                        </IonLabel>
-                                        <h1>
-                                            <IonInput
-                                                className="login-input-field"
-                                                autocomplete="email"
-                                                color="primary"
-                                                inputMode="email"
-                                                name="email"
-                                                pattern="email"
-                                                required
-                                            ></IonInput>
-                                        </h1>
+                                        </IonText>
+                                        <IonInput
+                                            className="login-input-field"
+                                            autocomplete="email"
+                                            color="primary"
+                                            inputMode="email"
+                                            name="email"
+                                            pattern="email"
+                                            required
+                                        ></IonInput>
                                     </IonItem>
                                 </IonCol>
                             </IonRow>
-                            <IonRow className="ion-padding-horizontal">
+                            <IonRow>
                                 <IonCol>
-                                    <IonItem className="login-input">
-                                        <IonLabel color="medium">
+                                    <IonItem>
+                                        <IonText
+                                            color="medium"
+                                            className="login-input"
+                                        >
                                             Senha
-                                        </IonLabel>
-                                        <h1>
-                                            <IonInput
-                                                className="login-input-field"
-                                                autocomplete="current-password"
-                                                type="password"
-                                                color="primary"
-                                                name="password"
-                                                pattern="password"
-                                                required
-                                            ></IonInput>
-                                        </h1>
+                                        </IonText>
+
+                                        <IonInput
+                                            className="login-input-field"
+                                            autocomplete="current-password"
+                                            type="password"
+                                            color="primary"
+                                            name="password"
+                                            pattern="password"
+                                            required
+                                        ></IonInput>
                                     </IonItem>
                                 </IonCol>
                             </IonRow>
-                            <IonRow className="ion-padding-horizontal ion-padding-top justify-content-center">
-                                <IonCol>
+                            <IonRow className="ion-padding-top justify-content-center">
+                                <IonCol sizeMd="5" size="12">
                                     <IonButton
-                                        color="primary"
                                         fill="outline"
                                         className="login-button"
                                     >
@@ -108,7 +106,6 @@ function LoginModal(props: any) {
                                 </IonCol>
                                 <IonCol>
                                     <IonButton
-                                        color="primary"
                                         fill="outline"
                                         className="login-button"
                                     >
