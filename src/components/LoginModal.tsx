@@ -1,10 +1,12 @@
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonFab, IonFabButton, IonGrid, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonRow, IonText } from "@ionic/react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
+import { login } from "../App";
 import "./LoginModal.css";
 
 function LoginModal(props: any) {
 
     const [showModal, setShowModal] = useState(false);
+    const inputRef = useRef<any>(null);
 
     return (
         <>
@@ -46,7 +48,7 @@ function LoginModal(props: any) {
                                 color="#"
                                 onClick={() => setShowModal(false)}
                             >
-                                <IonIcon name="close" color="#"></IonIcon>
+                                <IonIcon icon="close" color="#"></IonIcon>
                             </IonFabButton>
                         </IonFab>
                     </IonCardHeader>
@@ -54,7 +56,7 @@ function LoginModal(props: any) {
                         <IonGrid>
                             <IonRow>
                                 <IonCol>
-                                    <IonItem>
+                                    <IonItem className="login-item" color="#">
                                         <IonText
                                             color="medium"
                                             className="login-input"
@@ -62,6 +64,9 @@ function LoginModal(props: any) {
                                             E-mail
                                         </IonText>
                                         <IonInput
+                                            ref={(ref) =>
+                                                (inputRef.current = ref)
+                                            }
                                             className="login-input-field"
                                             autocomplete="email"
                                             color="primary"
@@ -75,7 +80,7 @@ function LoginModal(props: any) {
                             </IonRow>
                             <IonRow>
                                 <IonCol>
-                                    <IonItem>
+                                    <IonItem className="login-item" color="#">
                                         <IonText
                                             color="medium"
                                             className="login-input"
@@ -100,6 +105,7 @@ function LoginModal(props: any) {
                                     <IonButton
                                         fill="outline"
                                         className="login-button"
+                                        onClick={login}
                                     >
                                         ENTRAR
                                     </IonButton>

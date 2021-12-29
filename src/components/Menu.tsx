@@ -4,10 +4,8 @@ import {
     IonItem,
     IonLabel,
     IonList,
-    IonListHeader,
     IonMenu,
     IonMenuToggle,
-    IonNote,
     IonAccordionGroup,
     IonAccordion,
     IonButton,
@@ -31,8 +29,6 @@ import {
     rocketSharp,
     timeOutline,
     timeSharp,
-    personCircleOutline,
-    personCircleSharp,
 } from "ionicons/icons";
 import "./Menu.css";
 import React, { useRef, useState } from "react";

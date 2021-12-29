@@ -1,13 +1,13 @@
 import { IonItem } from "@ionic/react";
 import React from "react";
-import { UserInterface } from "../App";
 import Login from "./Login";
 import User from "./User";
+import { UsuarioInterface } from "./UsuarioModel";
 
 
-function userAuth(user: UserInterface) {
-    if(user.email === null || user.email === "") {
-        return <Login />
+function userAuth(user: UsuarioInterface) {
+    if (user === null ||user.email === null || user.email === "") {
+        return <Login />;
     }
     return <User userLogin={user} />;
 }

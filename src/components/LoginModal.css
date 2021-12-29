@@ -26,7 +26,7 @@
     margin-top: 0;
     width: 100%;
     /* font-size: calc(4px + 30%); */
-    text-shadow: 0px 0px 0.25em silver;
+    text-shadow: 0px 0px 0.55em #c0c0c09c, 0px 0px 0.55em #c0c0c09c;
 }
 .session-buttons:hover {
     color: white;
@@ -40,7 +40,7 @@
     margin-top: 0px;
     font-size: calc(16px + 1.2vw);
     font-family: 'Times New Roman', Times, serif;
-    text-shadow: 0 0 0.15em silver, 0 0 0.15em silver;
+    text-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
 }
 .close-icon {
     padding: 0;
@@ -54,10 +54,19 @@
     --border-color: transparent;
     --box-shadow: 0px;
 }
+.login-item {
+    /* border-radius: 32px;
+    background-color: #50505025; */
+    /* --border-color: blue; */
+    --highlight-background: blue;
+}
+.login-item::part(native) {
+}
 .login-input  {
-    --background: transparent;
+    /* --background: transparent;
     --highlight-background: var(--ion-color-primary);
-    --border-color: #ffffff88;
+    --highlight-color-activated: red;
+    --border-color: #ffffff88; */
     font-size: smaller;
     padding-left: 0;
 }
