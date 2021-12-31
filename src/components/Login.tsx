@@ -11,7 +11,7 @@ import { UsuarioInterface } from "./UsuarioModel";
 
 function Login(props: any) {
     const callBack = props.callBack;
-    async function loginCallBack(novoUser: UsuarioInterface, event) {
+    async function loginCallBack(novoUser: UsuarioInterface) {
         console.log(`[Login] user: ${novoUser}`);
         callBack(novoUser);
     }
