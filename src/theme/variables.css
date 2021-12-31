@@ -245,8 +245,8 @@ http://ionicframework.com/docs/theming/ */
       margin: 0;
   }
 
-  ion-accordion.accordion-expanding ion-item[slot="header"],
-  ion-accordion.accordion-expanded ion-item[slot="header"] {
+  ion-accordion.accordion-expanding ion-item,
+  ion-accordion.accordion-expanded ion-item {
       --color: #ffe365;
     }
 

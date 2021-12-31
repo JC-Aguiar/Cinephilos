@@ -31,7 +31,6 @@ import {
     timeSharp,
 } from "ionicons/icons";
 import "./Menu.css";
-import React, { useRef, useState } from "react";
 import { endpoint } from "../TMDB";
 import Acount from "./Acount";
 
@@ -104,15 +103,13 @@ const userRecents: MovieSumary[] = [
 ];
 
 function Menu(props: any) {
-
     const location = useLocation();
-
-    const loadMovie = () => endpoint(28);
+    // const loadMovie = () => endpoint(28);
 
     return (
         <IonMenu contentId="main" type="overlay" id="menu">
             <IonContent>
-                <Acount userLogin={props.userLogin} />
+                <Acount />
                 {appPages.map((appPage, index) => {
                     return (
                         <IonMenuToggle
@@ -144,22 +141,32 @@ function Menu(props: any) {
                     );
                 })}
                 <IonAccordionGroup>
-                    <IonAccordion value="recents" className="menu-panel" toggleIcon="none">
-                        <IonItem slot="header">
-                            <IonIcon
-                                slot="start"
-                                ios={timeSharp}
-                                md={timeOutline}
-                                color="#"
-                                className="ion-padding-start"
-                            />
-                            <IonLabel>Recentes</IonLabel>
-                        </IonItem>
+                    <IonAccordion
+                        value="recents"
+                        className="menu-panel"
+                        toggleIcon="none"
+                    >
+                        <div slot="header">
+                            <IonItem button={true} lines="none">
+                                <IonIcon
+                                    slot="start"
+                                    ios={timeSharp}
+                                    md={timeOutline}
+                                    color="#"
+                                    className="ion-padding-start"
+                                />
+                                <IonLabel>Recentes</IonLabel>
+                            </IonItem>
+                        </div>
                         <IonList slot="content" lines="none">
                             {userRecents.map((movieSumary, index) => {
                                 return (
                                     <IonItem key={index}>
-                                        <IonButton fill="clear" color="warning" className="recent-item">
+                                        <IonButton
+                                            fill="clear"
+                                            color="warning"
+                                            className="recent-item"
+                                        >
                                             {movieSumary.name}
                                         </IonButton>
                                     </IonItem>

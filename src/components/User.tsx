@@ -12,7 +12,7 @@ function User(props: any) {
                 <IonRow className="ion-padding-start">
                     <IonCol>
                         <IonLabel>
-                            <IonListHeader className="user-name">{user.getNome}</IonListHeader>
+                            <IonListHeader className="user-name">{user.nome}</IonListHeader>
                             <IonNote>{user.email}</IonNote>
                         </IonLabel>
                     </IonCol>

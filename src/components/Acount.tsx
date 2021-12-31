@@ -1,21 +1,26 @@
 import { IonItem } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
 import Login from "./Login";
 import User from "./User";
-import { UsuarioInterface } from "./UsuarioModel";
+import UsuarioModel, { UsuarioInterface } from "./UsuarioModel";
 
-
-function userAuth(user: UsuarioInterface) {
-    if (user === null ||user.email === null || user.email === "") {
-        return <Login />;
-    }
-    return <User userLogin={user} />;
-}
 
 function Acount(props: any) {
-    return(
+    const [user, setUser] = useState<UsuarioInterface>();
+    async function loginCallBack(novoUser: UsuarioInterface) {
+        console.log(`[Acount] user: ${novoUser}`);
+        setUser(novoUser);
+        console.log(`[Final] user: ${user}`);
+    }
+    function userAuth() {
+        if (user == null || user.email == null || user.email === "") {
+            return <Login userLogin={user} callBack={loginCallBack} />;
+        }
+        return <User userLogin={user} />;
+    }
+    return (
         <IonItem color="#" lines="none">
-            {userAuth(props.userLogin)}
+            {userAuth()}
         </IonItem>
     );
 }

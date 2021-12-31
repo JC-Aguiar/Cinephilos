@@ -1,12 +1,62 @@
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonFab, IonFabButton, IonGrid, IonIcon, IonInput, IonItem, IonLabel, IonModal, IonRow, IonText } from "@ionic/react";
-import React, { useRef, useState } from "react";
-import { login } from "../App";
+import axios from "axios";
+import React, { useState } from "react";
 import "./LoginModal.css";
+import { TokenInterface, TokenModel } from "./TokenModel";
+import UsuarioModel, { UsuarioInterface } from "./UsuarioModel";
 
 function LoginModal(props: any) {
-
     const [showModal, setShowModal] = useState(false);
-    const inputRef = useRef<any>(null);
+    const callBack = props.dataCallBack;
+    // const inputRef = useRef<any>(null);
+    function responseCheck(response: Response) {
+        if (response.status < 200 || response.status >= 300) {
+            throw new Error(response.statusText);
+        }
+    }
+    function statusCheck(status: number) {
+        if (status < 200 || status >= 300) {
+            throw new Error(`Status ${status}`);
+        }
+    }
+    async function login() {
+        // event.preventDefault();
+        try {
+            const response: TokenInterface = await axios
+                .post(
+                    "http://localhost:8010/login",
+                    {
+                        email: "jcostalaguiar@gmail.com",
+                        senha: "Cebola21",
+                    },
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Access-Control-Allow-Origin": "http://localhost:8010/*",
+                            "Access-Control-Allow-Methods": "POST, GET",
+                            "Access-Control-Allow-Headers": "*",
+                            "Access-Control-Max-Age": "60000",
+                        },
+                    }
+                )
+                .then((response) => {
+                    statusCheck(response.status);
+                    alert(`Status ${response.status}`);
+                    console.log(`[LoginModal] axios response: ${response}`);
+                    return response.data;
+                });
+            const token: TokenInterface = new TokenModel(response);
+            console.log(`[LoginModal] token: ${token}`);
+            const user: UsuarioInterface = new UsuarioModel(token.usuario);
+            console.log(`[LoginModal] user: ${user}`);
+            setShowModal(false);
+            callBack(user);
+        } catch (error) {
+            console.error(error);
+        }
+
+        // return user;
+    }
 
     return (
         <>
@@ -64,9 +114,6 @@ function LoginModal(props: any) {
                                             E-mail
                                         </IonText>
                                         <IonInput
-                                            ref={(ref) =>
-                                                (inputRef.current = ref)
-                                            }
                                             className="login-input-field"
                                             autocomplete="email"
                                             color="primary"
