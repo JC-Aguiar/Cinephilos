@@ -104,6 +104,10 @@ const userRecents: MovieSumary[] = [
 
 function Menu(props: any) {
     const location = useLocation();
+    function pageSelection(title: string) {
+        const callBack = props.callBack;
+        callBack(title);
+    }
     // const loadMovie = () => endpoint(28);
 
     return (
@@ -127,6 +131,7 @@ function Menu(props: any) {
                                 routerDirection="none"
                                 lines="none"
                                 detail={false}
+                                onClick={() => pageSelection(appPage.title)}
                             >
                                 <IonIcon
                                     slot="start"
