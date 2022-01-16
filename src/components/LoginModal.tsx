@@ -14,6 +14,14 @@ function LoginModal(props: any) {
     const [mensagemErro, SetMensagemErro] = useState("");
     const callBack = props.dataCallBack;
 
+    async function exibirModal() {
+        await document.getElementsByTagName("ion-modal").item(0)!.present();
+    }
+
+    async function esconderModal() {
+        await document.getElementsByTagName("ion-modal").item(0)!.dismiss();
+    }
+
     async function login() {
         const alert = await alertController.create({
             id: "login-loading",
@@ -24,21 +32,19 @@ function LoginModal(props: any) {
             keyboardClose: false,
         });
         try {
-            // console.log(`EMAIL: ${userEmail}, SENHA: ${userSenha}`);
-            await alert.present().then(() => setShowModal(false));
+            await alert.present().then(esconderModal);
             const response = await axiosRequest
                 .login(userEmail, userSenha);
             const token: TokenInterface = new TokenModel(response);
             const user: UsuarioInterface = new UsuarioModel(token.usuario);
-            // console.log(`[LoginModal] token: ${token}`);
-            // console.log(`[LoginModal] user: ${user}`);
             callBack(user);
         }
         catch (error) {
+            await exibirModal();
             if (error instanceof ErroModel) {
                 SetMensagemErro(error.mensagem.toString());
+                const alerta = setTimeout(() => SetMensagemErro(""), 6000);
             }
-            setShowModal(true);
             console.error(error);
         }
         finally {
@@ -52,8 +58,9 @@ function LoginModal(props: any) {
                 <IonRow className="justify-content-center">
                     <IonCol>
                         <IonButton
+                            id="session-login-button"
                             fill="clear"
-                            onClick={() => setShowModal(true)}
+                            onClick={exibirModal}
                         >
                             <IonText className="session-buttons">Login</IonText>
                         </IonButton>
@@ -69,8 +76,9 @@ function LoginModal(props: any) {
             </IonGrid>
             <IonModal
                 id="modal-login"
-                isOpen={showModal}
-                onDidDismiss={() => setShowModal(false)}
+                trigger="session-login-button"
+                // isOpen={showModal}
+                // onDidDismiss={() => setShowModal(false)}
                 color="#"
             >
                 <IonCard className="card-login">
@@ -84,7 +92,7 @@ function LoginModal(props: any) {
                             <IonFabButton
                                 className="close-icon"
                                 color="#"
-                                onClick={() => setShowModal(false)}
+                                onClick={esconderModal}
                             >
                                 <IonIcon icon="close" color="#"></IonIcon>
                             </IonFabButton>
@@ -104,7 +112,11 @@ function LoginModal(props: any) {
                                         <IonInput
                                             value={userEmail}
                                             onIonChange={(e) => {
-                                                setUserEmail((e.target as HTMLInputElement).value);
+                                                setUserEmail(
+                                                    (
+                                                        e.target as HTMLInputElement
+                                                    ).value
+                                                );
                                             }}
                                             className="login-input-field"
                                             autocomplete="email"
@@ -130,7 +142,11 @@ function LoginModal(props: any) {
                                         <IonInput
                                             value={userSenha}
                                             onIonChange={(e) => {
-                                                setUserSenha((e.target as HTMLInputElement).value);
+                                                setUserSenha(
+                                                    (
+                                                        e.target as HTMLInputElement
+                                                    ).value
+                                                );
                                             }}
                                             className="login-input-field"
                                             autocomplete="current-password"
