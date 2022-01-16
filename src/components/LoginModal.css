@@ -1,3 +1,17 @@
+/*MENU -> LOGIN ------------------------------ */
+.session-buttons {
+    padding-top: 0;
+    margin-top: 0;
+    width: 100%;
+    /* font-size: calc(4px + 30%); */
+    text-shadow: 0px 0px 0.55em #c0c0c09c, 0px 0px 0.55em #c0c0c09c;
+}
+.session-buttons:hover {
+    color: white;
+    text-shadow: 1px 0px 0.5em silver, -1px 0px 0.5em silver, 1px 0px 0.5em silver, -1px 0px 0.5em silver;
+}
+
+/*MODAL DE LOGIN ------------------------------ */
 #modal-login::part(backdrop) {
     background-color: #0c0c79;
     --backdrop-opacity: 55%;
@@ -12,25 +26,6 @@
     max-width: 46vw;
     min-width: 300px;
     border-radius: 20px;
-}
-#ion-react-wrapper {
-    background-color: var(--ion-color-light);
-    border-color: var(--ion-color-light);
-    margin-top: -10px;
-    margin-left: -10px;
-    margin-right: -10px;
-    border-radius: 20px;
-}
-.session-buttons {
-    padding-top: 0;
-    margin-top: 0;
-    width: 100%;
-    /* font-size: calc(4px + 30%); */
-    text-shadow: 0px 0px 0.55em #c0c0c09c, 0px 0px 0.55em #c0c0c09c;
-}
-.session-buttons:hover {
-    color: white;
-    text-shadow: 1px 0px 0.5em silver, -1px 0px 0.5em silver, 1px 0px 0.5em silver, -1px 0px 0.5em silver;
 }
 .card-login {
     height: 100%;
@@ -55,18 +50,11 @@
     --box-shadow: 0px;
 }
 .login-item {
-    /* border-radius: 32px;
-    background-color: #50505025; */
-    /* --border-color: blue; */
     --highlight-background: blue;
 }
 .login-item::part(native) {
 }
 .login-input  {
-    /* --background: transparent;
-    --highlight-background: var(--ion-color-primary);
-    --highlight-color-activated: red;
-    --border-color: #ffffff88; */
     font-size: smaller;
     padding-left: 0;
 }
@@ -91,7 +79,40 @@
     border-radius: 4px;
     box-shadow: 0 0 1em silver;
 }
-@media screen and (max-width: 500px) {
 
-
+/*??? ------------------------------ */
+#ion-react-wrapper {
+    background-color: var(--ion-color-light);
+    border-color: var(--ion-color-light);
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-radius: 20px;
 }
+
+/*LOADING DO LOGIN ------------------------------ */
+#login-loading ion-backdrop {
+    background-color: #0c0c79;
+    --backdrop-opacity: 55%;
+}
+#login-loading div {
+    --background: transparent;
+    box-shadow: none;
+    margin-top: -10vh;
+}
+#login-loading div.alert-head,
+#login-loading div.alert-button-group {
+    visibility: hidden;
+    padding: 0;
+    margin: 0;
+}
+#login-loading div.alert-message {
+    text-align: center;
+    font-size: xx-large;
+    margin: 0;
+}
+
+
+
+/* @media screen and (max-width: 500px) {
+} */
