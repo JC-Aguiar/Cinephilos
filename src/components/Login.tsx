@@ -9,7 +9,7 @@ import "./Login.css";
 import LoginModal from "./LoginModal";
 import { UsuarioInterface } from "./UsuarioModel";
 
-function Login(props: any) {
+const Login = (props: any) => {
     const callBack = props.callBack;
     async function loginCallBack(novoUser: UsuarioInterface) {
         // console.log(`[Login] user: ${novoUser}`);

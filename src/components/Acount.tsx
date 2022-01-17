@@ -5,7 +5,7 @@ import User from "./User";
 import UsuarioModel, { UsuarioInterface } from "./UsuarioModel";
 
 
-function Acount(props: any) {
+const Acount = (props: any) => {
     const [user, setUser] = useState<UsuarioInterface>();
     async function loginCallBack(novoUser: UsuarioInterface) {
         // console.log(`[Acount] user: ${novoUser}`);

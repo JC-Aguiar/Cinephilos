@@ -1,8 +1,9 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonViewDidEnter } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Page from './pages/Page';
+import Intro from './pages/Intro';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -35,18 +36,23 @@ export enum UserProfileEnum {
 
 const App: React.FC = () => {
     const [page, setPage] = useState<string>("");
+    useIonViewDidEnter(() => {
+        console.log("[APP] useIonViewDidEnter!");
+    });
     return (
         <IonApp>
             <IonReactRouter>
                 <IonSplitPane contentId="main">
                     <Menu callBack={(newPage: string) => setPage(newPage)} />
                     <IonRouterOutlet id="main">
-                        <Route path="/" exact={true}>
-                            <Redirect to="/movies/all" />
-                        </Route>
-                        <Route path="/page/:name" exact={true}>
-                            <Page page={page}/>
-                        </Route>
+                        <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/action"        exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/romance"       exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/drama"         exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/comedy"        exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/documentary"   exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
+                        <Route><Redirect to="/movies/all" /></Route>
                     </IonRouterOutlet>
                 </IonSplitPane>
             </IonReactRouter>
@@ -55,3 +61,32 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+/*
+    <IonSplitPane contentId="main">
+        <Menu callBack={(newPage: string) => setPage(newPage)} />
+        <IonRouterOutlet id="main">
+            <Route path="/" exact={true}>
+                <Redirect to="/movies/all" />
+            </Route>
+            <Route path="/page/:name" exact={true}>
+                <Page page={page} />
+            </Route>
+        </IonRouterOutlet>
+    </IonSplitPane>
+*/
+
+/*
+    <Route path="/intro"                exact={true} component={Intro} />
+    <Route path="/"                     exact={true}><Page page={page}/></Route>
+    <Route path="/index"                exact={true}><Page page={page}/></Route>
+    <Route path="/home"                 exact={true}><Page page={page}/></Route>
+    <Route path="/movies"               exact={true}><Page page={page}/></Route>
+    <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
+    <Route path="/movies/action"        exact={true}><Page page={page}/></Route>
+    <Route path="/movies/romance"       exact={true}><Page page={page}/></Route>
+    <Route path="/movies/drama"         exact={true}><Page page={page}/></Route>
+    <Route path="/movies/comedy"        exact={true}><Page page={page}/></Route>
+    <Route path="/movies/documentary"   exact={true}><Page page={page}/></Route>
+    <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
+*/

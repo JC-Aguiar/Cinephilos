@@ -1,15 +1,17 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonViewDidEnter } from '@ionic/react';
 import { useParams } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './Page.css';
 
-function Page(props: any) {
+const Page = (props: any) => {
 
   const { name } = useParams<{ name: string; }>();
   const page: string = props.page;
-
+    useIonViewDidEnter(() => {
+        console.log("[PAGE] useIonViewDidEnter!");
+    });
   return (
-        <IonContent >
+        <IonContent>
               <p>Página: {page}</p>
         </IonContent>
         /* <IonHeader>

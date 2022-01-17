@@ -7,7 +7,7 @@ import * as axiosRequest from "./AxiosRequest";
 import { alertController } from "@ionic/core";
 import { ErroModel } from "./ErroModel";
 
-function LoginModal(props: any) {
+const LoginModal = (props: any) => {
     const [showModal, setShowModal] = useState(false);
     const [userEmail, setUserEmail] = useState("");
     const [userSenha, setUserSenha] = useState("");

@@ -1,35 +1,6 @@
-import {
-    IonContent,
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonList,
-    IonMenu,
-    IonMenuToggle,
-    IonAccordionGroup,
-    IonAccordion,
-    IonButton,
-} from "@ionic/react";
-
+import { IonContent, IonIcon, IonItem, IonLabel, IonList, IonMenu, IonMenuToggle, IonAccordionGroup, IonAccordion, IonButton,} from "@ionic/react";
 import { useLocation } from "react-router-dom";
-import {
-    filmOutline,
-    filmSharp,
-    carSportOutline,
-    carSportSharp,
-    roseOutline,
-    roseSharp,
-    heartHalfOutline,
-    heartHalfSharp,
-    happyOutline,
-    happySharp,
-    bookOutline,
-    bookSharp,
-    rocketOutline,
-    rocketSharp,
-    timeOutline,
-    timeSharp,
-} from "ionicons/icons";
+import { filmOutline, filmSharp, carSportOutline, carSportSharp, roseOutline, roseSharp, heartHalfOutline, heartHalfSharp, happyOutline, happySharp, bookOutline, bookSharp, rocketOutline, rocketSharp, timeOutline, timeSharp,} from "ionicons/icons";
 import "./Menu.css";
 import { endpoint } from "../TMDB";
 import Acount from "./Acount";
@@ -49,48 +20,13 @@ interface MovieSumary {
 }
 
 const appPages: AppPage[] = [
-    {
-        title: "Navegação Livre",
-        url: "/movies/all",
-        iosIcon: filmOutline,
-        mdIcon: filmSharp,
-    },
-    {
-        title: "Ação",
-        url: "/movies/action",
-        iosIcon: carSportOutline,
-        mdIcon: carSportSharp,
-    },
-    {
-        title: "Romance",
-        url: "/movies/romance",
-        iosIcon: roseOutline,
-        mdIcon: roseSharp,
-    },
-    {
-        title: "Drama",
-        url: "/movies/drama",
-        iosIcon: heartHalfOutline,
-        mdIcon: heartHalfSharp,
-    },
-    {
-        title: "Comédia",
-        url: "/movies/comedy",
-        iosIcon: happyOutline,
-        mdIcon: happySharp,
-    },
-    {
-        title: "Documentário",
-        url: "/movies/documentary",
-        iosIcon: bookOutline,
-        mdIcon: bookSharp,
-    },
-    {
-        title: "Fantasia",
-        url: "/movies/fantasy",
-        iosIcon: rocketOutline,
-        mdIcon: rocketSharp,
-    },
+    { title: "Navegação Livre", url: "/movies/all",         iosIcon: filmOutline,       mdIcon: filmSharp       },
+    { title: "Ação",            url: "/movies/action",      iosIcon: carSportOutline,   mdIcon: carSportSharp   },
+    { title: "Romance",         url: "/movies/romance",     iosIcon: roseOutline,       mdIcon: roseSharp       },
+    { title: "Drama",           url: "/movies/drama",       iosIcon: heartHalfOutline,  mdIcon: heartHalfSharp  },
+    { title: "Comédia",         url: "/movies/comedy",      iosIcon: happyOutline,      mdIcon: happySharp      },
+    { title: "Documentário",    url: "/movies/documentary", iosIcon: bookOutline,       mdIcon: bookSharp       },
+    { title: "Fantasia",        url: "/movies/fantasy",     iosIcon: rocketOutline,     mdIcon: rocketSharp     },
 ];
 
 const userRecents: MovieSumary[] = [
@@ -102,13 +38,14 @@ const userRecents: MovieSumary[] = [
     }
 ];
 
-function Menu(props: any) {
+const Menu = (props: any) => {
     const location = useLocation();
+    // const loadMovie = () => endpoint(28);
+
     function pageSelection(title: string) {
         const callBack = props.callBack;
         callBack(title);
     }
-    // const loadMovie = () => endpoint(28);
 
     return (
         <IonMenu contentId="main" type="overlay" id="menu">
