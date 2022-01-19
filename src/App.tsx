@@ -42,7 +42,8 @@ const App: React.FC = () => {
     return (
         <IonApp>
             <IonReactRouter>
-                <IonSplitPane contentId="main">
+                <Route path="/" exact={true} component={Intro} />
+                {/* <IonSplitPane contentId="main">
                     <Menu callBack={(newPage: string) => setPage(newPage)} />
                     <IonRouterOutlet id="main">
                         <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
@@ -54,7 +55,7 @@ const App: React.FC = () => {
                         <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
                         <Route><Redirect to="/movies/all" /></Route>
                     </IonRouterOutlet>
-                </IonSplitPane>
+                </IonSplitPane> */}
             </IonReactRouter>
         </IonApp>
     );

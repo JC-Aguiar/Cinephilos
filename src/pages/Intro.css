@@ -1,0 +1,69 @@
+/* #logo {
+    width: 164px;
+    height: 164px;
+    background-image: url("../resources/icon.png");
+} */
+
+/* ion-content#mask {
+    position: fixed;
+    --background: linear-gradient(-45deg,
+        #000039, #000055, #000055,
+        #0f0f50, #562866, #562866,
+        #36195c, #000055, #000039,
+        #000039, #0f0f50, #5f2975,
+        #000055, #000055, #000039
+    );
+} */
+
+/* ion-content#img {
+    --background: url("../resources/logo cinephile title 2.png") no-repeat center center fixed;
+} */
+
+ion-content#logo {
+    position: fixed;
+    width: 400px;
+    height: 400px;
+    top: calc(50% - 200px);
+    left: calc(50% - 200px);
+    mask-image: url("../resources/logo cinephile title 2.png");
+    mask-size: 400px 400px;
+    mask-repeat: no-repeat;
+    mask-position: center center;
+    --background: linear-gradient(-45deg,
+        #000039, #000055, #000055,
+        #0f0f50, #562866, #562866,
+        #36195c, #000055, #000039,
+        #000039, #0f0f50, #5f2975,
+        #000055, #000055, #000039
+    );
+}
+
+ion-content#intro-bg {
+    position: fixed;
+    --ion-background-color: black;
+    z-index: -10;
+}
+
+@supports(-webkit-mask-image: url(#mask)) or (mask-image: url(#mask)) {
+
+}
+
+/* #logo-circle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: calc(-25vh);
+    margin-left: calc(-12.5vw);
+    width: 25vw;
+    height: 50vh;
+    border-radius: 100%;
+    background: linear-gradient(-45deg,
+        #000039, #000055, #000055,
+        #0f0f50, #562866, #562866,
+        #36195c, #000055, #000039,
+        #000039, #0f0f50, #5f2975,
+        #000055, #000055, #000039
+    );
+    z-index: -10;
+} */
+
