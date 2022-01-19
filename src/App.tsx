@@ -62,7 +62,6 @@ const App: React.FC = () => {
         }
         else {
             return(<>
-                {/* <Route component={Intro} /> */}
                 <Route path="/intro" component={Intro} exact={true} />
                 <Route><Redirect to="/intro" /></Route>
             </>);
