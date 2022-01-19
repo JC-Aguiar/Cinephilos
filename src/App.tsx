@@ -36,14 +36,16 @@ export enum UserProfileEnum {
 
 const App: React.FC = () => {
     const [page, setPage] = useState<string>("");
+    const [boasVindas, setBoasVindas] = useState(false);
+
     useIonViewDidEnter(() => {
         console.log("[APP] useIonViewDidEnter!");
     });
-    return (
-        <IonApp>
-            <IonReactRouter>
-                <Route path="/" exact={true} component={Intro} />
-                {/* <IonSplitPane contentId="main">
+
+    function rotasDeAcesso() {
+        if(boasVindas) {
+            return(
+                <IonSplitPane contentId="main">
                     <Menu callBack={(newPage: string) => setPage(newPage)} />
                     <IonRouterOutlet id="main">
                         <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
@@ -55,39 +57,25 @@ const App: React.FC = () => {
                         <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
                         <Route><Redirect to="/movies/all" /></Route>
                     </IonRouterOutlet>
-                </IonSplitPane> */}
+                </IonSplitPane>
+            );
+        }
+        else {
+            return(<>
+                {/* <Route component={Intro} /> */}
+                <Route path="/intro" component={Intro} exact={true} />
+                <Route><Redirect to="/intro" /></Route>
+            </>);
+        }
+    }
+
+    return (
+        <IonApp>
+            <IonReactRouter>
+                {rotasDeAcesso()}
             </IonReactRouter>
         </IonApp>
     );
 };
 
 export default App;
-
-/*
-    <IonSplitPane contentId="main">
-        <Menu callBack={(newPage: string) => setPage(newPage)} />
-        <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-                <Redirect to="/movies/all" />
-            </Route>
-            <Route path="/page/:name" exact={true}>
-                <Page page={page} />
-            </Route>
-        </IonRouterOutlet>
-    </IonSplitPane>
-*/
-
-/*
-    <Route path="/intro"                exact={true} component={Intro} />
-    <Route path="/"                     exact={true}><Page page={page}/></Route>
-    <Route path="/index"                exact={true}><Page page={page}/></Route>
-    <Route path="/home"                 exact={true}><Page page={page}/></Route>
-    <Route path="/movies"               exact={true}><Page page={page}/></Route>
-    <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
-    <Route path="/movies/action"        exact={true}><Page page={page}/></Route>
-    <Route path="/movies/romance"       exact={true}><Page page={page}/></Route>
-    <Route path="/movies/drama"         exact={true}><Page page={page}/></Route>
-    <Route path="/movies/comedy"        exact={true}><Page page={page}/></Route>
-    <Route path="/movies/documentary"   exact={true}><Page page={page}/></Route>
-    <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
-*/
