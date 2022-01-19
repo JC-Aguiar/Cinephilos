@@ -26,7 +26,7 @@ ion-content#logo {
     top: calc(50% - 200px);
     left: calc(50% - 200px);
     mask-image: url("../resources/logo cinephile title 2.png");
-    mask-size: 400px 400px;
+    mask-size: 100px 100px;
     mask-repeat: no-repeat;
     mask-position: center center;
     --background: linear-gradient(-45deg,
@@ -36,6 +36,22 @@ ion-content#logo {
         #000039, #0f0f50, #5f2975,
         #000055, #000055, #000039
     );
+    /* animation: intro-animation 3s linear forwards; */
+}
+
+@keyframes intro-animation {
+    0% {
+        mask-size: 0px 0px;
+    }
+    25% {
+        animation-timing-function: ease-out;
+        mask-size: 300px 300px;
+    }
+    100% {
+        animation-timing-function: ease-out;
+        mask-size: 400px 400px;
+        opacity: 0%;
+    }
 }
 
 ion-content#intro-bg {

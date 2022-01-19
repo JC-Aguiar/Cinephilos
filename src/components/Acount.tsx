@@ -8,9 +8,7 @@ import UsuarioModel, { UsuarioInterface } from "./UsuarioModel";
 const Acount = (props: any) => {
     const [user, setUser] = useState<UsuarioInterface>();
     async function loginCallBack(novoUser: UsuarioInterface) {
-        // console.log(`[Acount] user: ${novoUser}`);
         setUser(novoUser);
-        // console.log(`[Final] user: ${user}`);
     }
     function userAuth() {
         if (user == null || user.email == null || user.email === "") {

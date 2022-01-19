@@ -38,9 +38,14 @@ const App: React.FC = () => {
     const [page, setPage] = useState<string>("");
     const [boasVindas, setBoasVindas] = useState(false);
 
-    useIonViewDidEnter(() => {
-        console.log("[APP] useIonViewDidEnter!");
-    });
+    function animationEnd() {
+        setBoasVindas(true);
+    }
+
+    /**TODO: PORQUE USE-ION-VIEW-DID-ENTER NÃO ESTÁ FUNCIONANDO? */
+    // useIonViewDidEnter(() => {
+    //     console.log("[APP] useIonViewDidEnter!");
+    // });
 
     function rotasDeAcesso() {
         if(boasVindas) {
@@ -48,13 +53,13 @@ const App: React.FC = () => {
                 <IonSplitPane contentId="main">
                     <Menu callBack={(newPage: string) => setPage(newPage)} />
                     <IonRouterOutlet id="main">
-                        <Route path="/movies/all"           exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/action"        exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/romance"       exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/drama"         exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/comedy"        exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/documentary"   exact={true}><Page page={page}/></Route>
-                        <Route path="/movies/fantasy"       exact={true}><Page page={page}/></Route>
+                        <Route path="/movies/all"           exact><Page page={page}/></Route>
+                        <Route path="/movies/action"        exact><Page page={page}/></Route>
+                        <Route path="/movies/romance"       exact><Page page={page}/></Route>
+                        <Route path="/movies/drama"         exact><Page page={page}/></Route>
+                        <Route path="/movies/comedy"        exact><Page page={page}/></Route>
+                        <Route path="/movies/documentary"   exact><Page page={page}/></Route>
+                        <Route path="/movies/fantasy"       exact><Page page={page}/></Route>
                         <Route><Redirect to="/movies/all" /></Route>
                     </IonRouterOutlet>
                 </IonSplitPane>
@@ -62,8 +67,8 @@ const App: React.FC = () => {
         }
         else {
             return(<>
-                <Route path="/intro" component={Intro} exact={true} />
-                <Route><Redirect to="/intro" /></Route>
+                <Route path="/intro" exact><Intro callBack={animationEnd} /></Route>
+                <Redirect from='/*' to="/intro" />
             </>);
         }
     }
