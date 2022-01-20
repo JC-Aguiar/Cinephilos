@@ -20,7 +20,7 @@ interface MovieSumary {
 }
 
 const appPages: AppPage[] = [
-    { title: "Navegação Livre", url: "/movies/all",         iosIcon: filmOutline,       mdIcon: filmSharp       },
+    { title: "Todos",           url: "/movies/all",         iosIcon: filmOutline,       mdIcon: filmSharp       },
     { title: "Ação",            url: "/movies/action",      iosIcon: carSportOutline,   mdIcon: carSportSharp   },
     { title: "Romance",         url: "/movies/romance",     iosIcon: roseOutline,       mdIcon: roseSharp       },
     { title: "Drama",           url: "/movies/drama",       iosIcon: heartHalfOutline,  mdIcon: heartHalfSharp  },
