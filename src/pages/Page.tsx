@@ -1,4 +1,4 @@
-import { IonCol, IonContent, IonGrid, IonLabel, IonRow, IonText } from '@ionic/react';
+import { IonApp, IonCol, IonContent, IonGrid, IonItem, IonLabel, IonRow, IonText, IonThumbnail } from '@ionic/react';
 import { useParams } from 'react-router';
 import GaleriaFilmes from '../components/GaleriaFilmes';
 import Duração from '../components/Duração';
@@ -49,20 +49,24 @@ const Page = (props: any) => {
     ];
 
     return (
-        <IonContent>
-            <IonLabel id="pagina-titulo">{page}</IonLabel>
-            <IonGrid id="galeria-filmes">
-                <IonRow className="justify-content-center">
+        <IonApp>
+            <IonContent>
+                <div id='mini-logo' />
+                <IonText id="pagina-titulo">{page}</IonText>
+                <IonGrid id='galeria-filmes' className='ion-no-padding'>
                     {filmes.map((filme, index) => {
                         return (
-                            <IonCol>
-                                <GaleriaFilmes conteudo={filme} key={index} num={index} />
-                            </IonCol>
+                            <IonRow>
+                                <IonCol>
+                                    <GaleriaFilmes conteudo={filme} key={index} num={index} />
+                                </IonCol>
+                            </IonRow>
                         );
                     })}
-                </IonRow>
-            </IonGrid>
-        </IonContent>
+                </IonGrid>
+            </IonContent>
+
+        </IonApp>
         /* <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">

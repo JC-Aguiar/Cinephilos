@@ -1,4 +1,4 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonViewDidEnter } from '@ionic/react';
+import { IonApp, IonMenuToggle, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonViewDidEnter } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
@@ -50,8 +50,9 @@ const App: React.FC = () => {
     function rotasDeAcesso() {
         if(boasVindas) {
             return(
-                <IonSplitPane contentId="main">
-                    <Menu callBack={(newPage: string) => setPage(newPage)} />
+                <IonSplitPane contentId="main" when={false} >
+                    <Menu callBack={(newPage: string) => setPage(newPage)}  />
+
                     <IonRouterOutlet id="main">
                         <Route path="/movies/all"           exact><Page page={page}/></Route>
                         <Route path="/movies/action"        exact><Page page={page}/></Route>

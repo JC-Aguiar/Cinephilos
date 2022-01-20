@@ -1,9 +1,16 @@
 #card-filme {
-    width: 50vw;
-    min-width: 500px;
-    height: 60vh;
-    background-color: transparent;
-    box-shadow: 0 0 .5em var(--ion-color-primary);
+    border: 2px solid black;
+    /* width: 30vw;
+    min-width: 300px; */
+    width: auto;
+    height: 100vw;
+    max-height: 800px;
+    margin: auto;
+    /* left: 50%;
+    margin-left: -400px; */
+    margin-bottom: 32px;
+    background-color: black;
+    box-shadow: 0 0 .5em black;
 }
 
 #card-filme ion-card-title {
