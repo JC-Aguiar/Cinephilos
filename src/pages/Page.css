@@ -1,1 +1,22 @@
+#pagina-titulo {
+    padding-left: 16px;
+    line-height: 100%;
+    font-size: 500%;
+    font-variant: small-caps;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
+}
+
+#galeria-filmes {
+    display: flex;
+}
+
+#galeria-filmes ion-row {
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    width: 100%;
+    --ion-grid-columns: 1;
+    --ion-grid-padding: 8px;
+}
 

@@ -1,0 +1,15 @@
+#card-filme {
+    width: 50vw;
+    min-width: 500px;
+    height: 60vh;
+    background-color: transparent;
+    box-shadow: 0 0 .5em var(--ion-color-primary);
+}
+
+#card-filme ion-card-title {
+    font-size: 200%;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
+}
+
+
