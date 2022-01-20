@@ -3,6 +3,7 @@
     /* width: 30vw;
     min-width: 300px; */
     width: auto;
+    max-width: 600px;
     height: 100vw;
     max-height: 800px;
     margin: auto;

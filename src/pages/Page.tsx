@@ -52,7 +52,10 @@ const Page = (props: any) => {
         <IonApp>
             <IonContent>
                 <div id='mini-logo' />
-                <IonText id="pagina-titulo">{page}</IonText>
+                <h1>
+                    <div id="pagina-titulo-reflexo">{page}</div>
+                    <div id="pagina-titulo">{page}</div>
+                </h1>
                 <IonGrid id='galeria-filmes' className='ion-no-padding'>
                     {filmes.map((filme, index) => {
                         return (
