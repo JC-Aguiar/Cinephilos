@@ -25,7 +25,7 @@ const Page = (props: any) => {
         atores: ["Gabrielle de Mello", "João Costal Aguiar"],
         classificação: ClassificaçãoEnum.LIVRE,
         logo: "logo.png",
-        capas: ["capa01.jpg", "capa02.jpg", "capa03.jpg"],
+        capas: ["https://i.imgur.com/xBzRlb9.jpeg"],
         epoca: [EpocaEnum.ATUAL],
         roteiro: RoteiroEnum.ORIGINAL,
         estetica: [EsteticaEnum.PADRÃO],

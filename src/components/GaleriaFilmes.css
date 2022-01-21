@@ -18,6 +18,15 @@
     font-size: 200%;
     font-family: 'Times New Roman', Times, serif;
     text-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
+    padding: 0;
+}
+
+#filme-texto {
+    position: absolute;
+}
+
+#filme-capa {
+    position: absolute;
 }
 
 

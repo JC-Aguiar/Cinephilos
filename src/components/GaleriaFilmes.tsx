@@ -1,4 +1,4 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonRow } from "@ionic/react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonRow } from "@ionic/react";
 import React, { useState } from "react";
 import FilmeModel from "./FilmeModel";
 import "./GaleriaFilmes.css";
@@ -27,18 +27,21 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.filme
     );
     const [capaSlide, setCapaSlide] = useState(filme.capas[0]);
+    console.log("capaSlide:" + capaSlide);
 
     return (
         <IonCard id="card-filme" target="_self">
-            <IonCardHeader>
-                <IonCardTitle>[{props.num}] {filme.titulo}</IonCardTitle>
+            <IonImg id="filme-capa" src={capaSlide} />
+            <IonCardHeader id="filme-texto">
+                <IonCardTitle>
+                    [{props.num}] {filme.titulo}
+                </IonCardTitle>
                 <IonCardSubtitle>
                     {filme.generos.map((genero, index) => {
                         return genero + "\u00A0\u00A0\u00A0";
                     })}
                 </IonCardSubtitle>
             </IonCardHeader>
-            <IonCardContent>{capaSlide}</IonCardContent>
         </IonCard>
     );
 };
