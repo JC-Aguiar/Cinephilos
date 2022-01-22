@@ -1,4 +1,4 @@
-import { IonApp, IonCol, IonContent, IonGrid, IonItem, IonLabel, IonPage, IonRow, IonText, IonThumbnail, ScrollDetail, useIonViewDidEnter, withIonLifeCycle } from '@ionic/react';
+import { IonApp, IonCol, IonContent, IonGrid, IonItem, IonLabel, IonPage, IonRow, IonSlide, IonSlides, IonText, IonThumbnail, ScrollDetail, useIonViewDidEnter, withIonLifeCycle } from '@ionic/react';
 import { useParams } from 'react-router';
 import GaleriaFilmes from '../components/GaleriaFilmes';
 import Duração from '../components/Duração';
@@ -9,6 +9,9 @@ import { useState } from 'react';
 const Page = (props: any) => {
     const { name } = useParams<{ name: string }>();
     const page = props.page === "" ? "Todos" : props.page;
+    const itemCard = [{x: Number,y: Number,w: Number,h: Number}];
+    const [cards, setCards] = useState(itemCard);
+    const [altura, setAltura] = useState(0);
     const [scroll, setScroll] = useState(0);
     const filmeExemplo: FilmeModel = {
         id: 1,
@@ -52,15 +55,19 @@ const Page = (props: any) => {
     ];
 
     const scrollHandler = (e: CustomEvent<ScrollDetail>) => {
-        console.log("Scrolled! currentY: " + scroll);
+        // const content = document.getElementsByTagName("ion-content").item;
+        // const paginaAltura = content.getScrollElement();
+        console.log(`ScrollY: ${scroll}`);
         setScroll(e.detail.currentY);
-
         //callback aos cards de filmes para verificar se eles estão no centor e alterar css
-    }
+    };
 
     useIonViewDidEnter(() => {
-
     });
+
+    // const listaCards = (e: HTMLIonCardElement[]) => {
+
+    // }
 
     return (
         <IonPage>
@@ -70,25 +77,22 @@ const Page = (props: any) => {
                 onIonScroll={(e) => scrollHandler(e)}
             >
                 <div id="mini-logo" />
-                <h1>
+                {/* <h1>
                     <div id="pagina-titulo-reflexo">{page}</div>
                     <div id="pagina-titulo">{page}</div>
-                </h1>
-                <IonGrid id="galeria-filmes" className="ion-no-padding">
+                </h1> */}
+                <IonSlides id="galeria-filmes" pager={true}>
                     {filmes.map((filme, index) => {
                         return (
-                            <IonRow key={index}>
-                                <IonCol>
-                                    <GaleriaFilmes
-                                        conteudo={filme}
-                                        num={index}
-                                        scrollY={scroll}
-                                    />
-                                </IonCol>
-                            </IonRow>
+                            <IonSlide key={index}>
+                                <GaleriaFilmes
+                                    conteudo={filme}
+                                    num={index}
+                                />
+                            </IonSlide>
                         );
                     })}
-                </IonGrid>
+                </IonSlides>
             </IonContent>
         </IonPage>
         /* <IonHeader>

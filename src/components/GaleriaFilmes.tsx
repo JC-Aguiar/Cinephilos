@@ -28,10 +28,6 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.filme
     );
     const [capaSlide, setCapaSlide] = useState(filme.capas[0]);
-    const scrollY = props.scrollY;
-    const estaNoCentro = () => {
-
-    }
 
     return (
         <IonCard id="card-filme" target="_self">

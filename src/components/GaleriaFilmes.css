@@ -30,6 +30,8 @@
 #filme-capa {
     position: absolute;
     object-fit: cover;
+    user-select: none;
+    pointer-events: none;
     mask-image: linear-gradient(to left, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 75%);
     object-position: center center;
 }
