@@ -1,5 +1,5 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonRow } from "@ionic/react";
-import React, { useState } from "react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonLabel, IonRow, IonThumbnail, useIonViewDidEnter } from "@ionic/react";
+import React, { useEffect, useState } from "react";
 import FilmeModel from "./FilmeModel";
 import "./GaleriaFilmes.css";
 
@@ -16,6 +16,7 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.classificação,
         props.conteudo.logo,
         props.conteudo.capas,
+        props.conteudo.font,
         props.conteudo.epoca,
         props.conteudo.roteiro,
         props.conteudo.estetica,
@@ -27,14 +28,16 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.filme
     );
     const [capaSlide, setCapaSlide] = useState(filme.capas[0]);
-    console.log("capaSlide:" + capaSlide);
+    const scrollY = props.scrollY;
+    const estaNoCentro = () => {
+
+    }
 
     return (
         <IonCard id="card-filme" target="_self">
-            <IonImg id="filme-capa" src={capaSlide} />
             <IonCardHeader id="filme-texto">
-                <IonCardTitle>
-                    [{props.num}] {filme.titulo}
+                <IonCardTitle id="filme-title" style={{ fontFamily: filme.font }}>
+                    {filme.titulo}
                 </IonCardTitle>
                 <IonCardSubtitle>
                     {filme.generos.map((genero, index) => {
@@ -42,6 +45,9 @@ const GaleriaFilmes = (props: any) => {
                     })}
                 </IonCardSubtitle>
             </IonCardHeader>
+            <IonThumbnail>
+                <IonImg id="filme-capa" src={capaSlide} />
+            </IonThumbnail>
         </IonCard>
     );
 };

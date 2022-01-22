@@ -1,16 +1,18 @@
-import { IonApp, IonCol, IonContent, IonGrid, IonItem, IonLabel, IonRow, IonText, IonThumbnail } from '@ionic/react';
+import { IonApp, IonCol, IonContent, IonGrid, IonItem, IonLabel, IonPage, IonRow, IonText, IonThumbnail, ScrollDetail, useIonViewDidEnter, withIonLifeCycle } from '@ionic/react';
 import { useParams } from 'react-router';
 import GaleriaFilmes from '../components/GaleriaFilmes';
 import Duração from '../components/Duração';
 import './Page.css';
 import FilmeModel, { ClassificaçãoEnum, EpocaEnum, EsteticaEnum, GenerosEnum, RoteiroEnum } from '../components/FilmeModel';
+import { useState } from 'react';
 
 const Page = (props: any) => {
     const { name } = useParams<{ name: string }>();
-    const page: string = props.page;
+    const page = props.page === "" ? "Todos" : props.page;
+    const [scroll, setScroll] = useState(0);
     const filmeExemplo: FilmeModel = {
         id: 1,
-        titulo: "Gabrielle de Mello Almeida",
+        titulo: "2001: uma odisséia no espaço",
         sinopse:
             "Uma garota incrível aceita um oferta de emprego inesperada para uma aventura na metrópole misteriosa.",
         generos: [
@@ -26,6 +28,7 @@ const Page = (props: any) => {
         classificação: ClassificaçãoEnum.LIVRE,
         logo: "logo.png",
         capas: ["https://i.imgur.com/xBzRlb9.jpeg"],
+        font: 'Futura',
         epoca: [EpocaEnum.ATUAL],
         roteiro: RoteiroEnum.ORIGINAL,
         estetica: [EsteticaEnum.PADRÃO],
@@ -48,28 +51,46 @@ const Page = (props: any) => {
         filmeExemplo,
     ];
 
+    const scrollHandler = (e: CustomEvent<ScrollDetail>) => {
+        console.log("Scrolled! currentY: " + scroll);
+        setScroll(e.detail.currentY);
+
+        //callback aos cards de filmes para verificar se eles estão no centor e alterar css
+    }
+
+    useIonViewDidEnter(() => {
+
+    });
+
     return (
-        <IonApp>
-            <IonContent>
-                <div id='mini-logo' />
+        <IonPage>
+            <IonContent
+                fullscreen={true}
+                scrollEvents={true}
+                onIonScroll={(e) => scrollHandler(e)}
+            >
+                <div id="mini-logo" />
                 <h1>
                     <div id="pagina-titulo-reflexo">{page}</div>
                     <div id="pagina-titulo">{page}</div>
                 </h1>
-                <IonGrid id='galeria-filmes' className='ion-no-padding'>
+                <IonGrid id="galeria-filmes" className="ion-no-padding">
                     {filmes.map((filme, index) => {
                         return (
-                            <IonRow>
+                            <IonRow key={index}>
                                 <IonCol>
-                                    <GaleriaFilmes conteudo={filme} key={index} num={index} />
+                                    <GaleriaFilmes
+                                        conteudo={filme}
+                                        num={index}
+                                        scrollY={scroll}
+                                    />
                                 </IonCol>
                             </IonRow>
                         );
                     })}
                 </IonGrid>
             </IonContent>
-
-        </IonApp>
+        </IonPage>
         /* <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">

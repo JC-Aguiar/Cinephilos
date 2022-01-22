@@ -91,6 +91,7 @@ interface FilmeInterface {
     readonly classificação: ClassificaçãoEnum;
     readonly logo: string;
     readonly capas: string[];
+    readonly font: string,
     readonly epoca: EpocaEnum[];
     readonly roteiro: RoteiroEnum;
     readonly estetica: EsteticaEnum[];
@@ -118,6 +119,7 @@ class FilmeModel implements FilmeInterface {
         readonly classificação: ClassificaçãoEnum,
         readonly logo: string,
         readonly capas: string[],
+        readonly font: string,
         readonly epoca: EpocaEnum[],
         readonly roteiro: RoteiroEnum,
         readonly estetica: EsteticaEnum[],
