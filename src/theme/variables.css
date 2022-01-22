@@ -189,7 +189,7 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .md body {
-    --ion-background-color: linear-gradient(#121212, #252323, #3a3838, #585252, #121212);
+    --ion-background-color: linear-gradient(#000000, #080808, #222020, #494444, #000000);
     --ion-background-color-rgb: 18,18,18;
 
     --ion-text-color: #ffffffaa;
