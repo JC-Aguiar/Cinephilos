@@ -42,6 +42,8 @@ const Page = (props: any) => {
         logo: "logo.png",
         capas: ["https://i.imgur.com/xBzRlb9.jpeg"],
         font: 'Futura',
+        posiçao: "center center",
+        fit: "cover",
         epoca: [EpocaEnum.ATUAL],
         roteiro: RoteiroEnum.ORIGINAL,
         estetica: [EsteticaEnum.PADRÃO],

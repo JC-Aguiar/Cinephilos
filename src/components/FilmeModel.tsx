@@ -92,6 +92,8 @@ interface FilmeInterface {
     readonly logo: string;
     readonly capas: string[];
     readonly font: string,
+    readonly posiçao: string,
+    readonly fit: string,
     readonly epoca: EpocaEnum[];
     readonly roteiro: RoteiroEnum;
     readonly estetica: EsteticaEnum[];
@@ -120,6 +122,8 @@ class FilmeModel implements FilmeInterface {
         readonly logo: string,
         readonly capas: string[],
         readonly font: string,
+        readonly posiçao: string,
+        readonly fit: string,
         readonly epoca: EpocaEnum[],
         readonly roteiro: RoteiroEnum,
         readonly estetica: EsteticaEnum[],

@@ -18,6 +18,8 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.logo,
         props.conteudo.capas,
         props.conteudo.font,
+        props.conteudo.posição,
+        props.conteudo.fit,
         props.conteudo.epoca,
         props.conteudo.roteiro,
         props.conteudo.estetica,
