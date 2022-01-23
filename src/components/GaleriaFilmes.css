@@ -34,6 +34,17 @@
     pointer-events: none;
     mask-image: linear-gradient(to left, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 75%);
     object-position: center center;
+    border: 0;
+    opacity: 0;
+}
+
+@keyframes exibirCapa {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
 }
 
 #filme-capa-mask {

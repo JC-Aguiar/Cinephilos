@@ -5,6 +5,16 @@ import Duração from '../components/Duração';
 import './Page.css';
 import FilmeModel, { ClassificaçãoEnum, EpocaEnum, EsteticaEnum, GenerosEnum, RoteiroEnum } from '../components/FilmeModel';
 import { useState } from 'react';
+import {Swiper, SwiperSlide} from "swiper/react/swiper-react.js";
+
+import "swiper/swiper.min.css";
+import "swiper/modules/autoplay/autoplay.min.css";
+import "swiper/modules/keyboard/keyboard.min.css";
+import "swiper/modules/pagination/pagination.min.css";
+import "swiper/modules/scrollbar/scrollbar.min.css";
+import "swiper/modules/zoom/zoom.min.css";
+import "@ionic/react/css/ionic-swiper.css";
+import axios from 'axios';
 
 const Page = (props: any) => {
     const { name } = useParams<{ name: string }>();
@@ -63,6 +73,7 @@ const Page = (props: any) => {
     };
 
     useIonViewDidEnter(() => {
+            // preloadImagens();
     });
 
     // const listaCards = (e: HTMLIonCardElement[]) => {
@@ -81,18 +92,24 @@ const Page = (props: any) => {
                     <div id="pagina-titulo-reflexo">{page}</div>
                     <div id="pagina-titulo">{page}</div>
                 </h1> */}
-                <IonSlides id="galeria-filmes" pager={true}>
+                <Swiper
+                    id="galeria-filmes"
+                    slidesPerView={1}
+                    loop={false}
+                    autoplay={false}
+                    direction="vertical"
+                    touchStartPreventDefault={false}
+                    threshold={50}
+                    preloadImages={true}
+                >
                     {filmes.map((filme, index) => {
                         return (
-                            <IonSlide key={index}>
-                                <GaleriaFilmes
-                                    conteudo={filme}
-                                    num={index}
-                                />
-                            </IonSlide>
+                            <SwiperSlide key={index}>
+                                <GaleriaFilmes conteudo={filme} num={index} />
+                            </SwiperSlide>
                         );
                     })}
-                </IonSlides>
+                </Swiper>
             </IonContent>
         </IonPage>
         /* <IonHeader>
