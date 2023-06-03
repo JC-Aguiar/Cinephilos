@@ -1,4 +1,5 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonLabel, IonRow, IonThumbnail, useIonViewDidEnter } from "@ionic/react";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import FilmeModel from "./FilmeModel";
 import "./GaleriaFilmes.css";
@@ -17,6 +18,8 @@ const GaleriaFilmes = (props: any) => {
         props.conteudo.logo,
         props.conteudo.capas,
         props.conteudo.font,
+        props.conteudo.posição,
+        props.conteudo.fit,
         props.conteudo.epoca,
         props.conteudo.roteiro,
         props.conteudo.estetica,
@@ -29,10 +32,18 @@ const GaleriaFilmes = (props: any) => {
     );
     const [capaSlide, setCapaSlide] = useState(filme.capas[0]);
 
+    const exibirImagem = (e: HTMLIonImgElement) => {
+        // e.style.opacity = "100";
+        e.style.animation = "exibirCapa 1s forwards";
+    }
+
     return (
         <IonCard id="card-filme" target="_self">
             <IonCardHeader id="filme-texto">
-                <IonCardTitle id="filme-title" style={{ fontFamily: filme.font }}>
+                <IonCardTitle
+                    id="filme-title"
+                    style={{ fontFamily: filme.font }}
+                >
                     {filme.titulo}
                 </IonCardTitle>
                 <IonCardSubtitle>
@@ -42,7 +53,15 @@ const GaleriaFilmes = (props: any) => {
                 </IonCardSubtitle>
             </IonCardHeader>
             <IonThumbnail>
-                <IonImg id="filme-capa" src={capaSlide} />
+                <IonImg
+                    id="filme-capa"
+                    src={capaSlide}
+                    onIonImgDidLoad={(e) =>
+                        exibirImagem(e.target as HTMLIonImgElement)
+                    }
+                    // ALTERAR O MÉTODO: FADES DEVEM SER FEITOS NO SWIPER
+                />
+                {/* providenciar -> onIonError */}
             </IonThumbnail>
         </IonCard>
     );

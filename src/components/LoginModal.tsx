@@ -142,11 +142,7 @@ const LoginModal = (props: any) => {
                                         <IonInput
                                             value={userSenha}
                                             onIonChange={(e) => {
-                                                setUserSenha(
-                                                    (
-                                                        e.target as HTMLInputElement
-                                                    ).value
-                                                );
+                                                setUserSenha((e.target as HTMLInputElement).value);
                                             }}
                                             className="login-input-field"
                                             autocomplete="current-password"
