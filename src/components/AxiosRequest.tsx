@@ -1,4 +1,4 @@
-import axios, { AxiosRequestHeaders, AxiosResponse } from '../../node_modules/axios';
+import axios, { AxiosRequestHeaders, AxiosResponse } from 'axios';
 import { TokenModel } from './TokenModel';
 import { ErroModel } from './ErroModel';
 

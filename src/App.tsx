@@ -55,14 +55,13 @@ const App: React.FC = () => {
                     <Menu callBack={(newPage: string) => setPage(newPage)}  />
 
                     <IonRouterOutlet id="main">
-                        <Route path="/movies/all"           exact><Page page={page}/></Route>
-                        <Route path="/movies/action"        exact><Page page={page}/></Route>
-                        <Route path="/movies/romance"       exact><Page page={page}/></Route>
-                        <Route path="/movies/drama"         exact><Page page={page}/></Route>
-                        <Route path="/movies/comedy"        exact><Page page={page}/></Route>
-                        <Route path="/movies/documentary"   exact><Page page={page}/></Route>
-                        <Route path="/movies/fantasy"       exact><Page page={page}/></Route>
-                        <Route><Redirect to="/movies/all" /></Route>
+                        <Route path="/news"          exact><Page page={page}/></Route>
+                        <Route   path="/perfumes"    exact><Page page={page}/></Route>
+                        <Route   path="/notas"       exact><Page page={page}/></Route>
+                        <Route   path="/perfumistas" exact><Page page={page}/></Route>
+                        <Route   path="/forum"       exact><Page page={page}/></Route>
+                        <Route   path="/sobre"       exact><Page page={page}/></Route>
+                        <Route><Redirect to="/perfumes" /></Route>
                     </IonRouterOutlet>
                 </IonSplitPane>
             );

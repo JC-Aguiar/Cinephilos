@@ -1,25 +1,31 @@
 #card-filme {
-    border: 2px solid black;
-    width: 80vw;
-    height: 800px;
-    max-height: 95vh;
+    border: 2px solid #e8a8a0;
+    width: 100%;
+    height: 95vh;
+    /* max-height: 95vh; */
     margin: auto;
     margin-bottom: 32px;
-    background-color: black;
-    box-shadow: 0 0 0.5em black;
+    background-color: transparent;
+    box-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
     user-select: none;
 }
 
 #filme-texto {
-    position: absolute;
+    /* position: absolute; */
     z-index: 50;
+    text-align: center;
 }
 
 #filme-texto ion-card-title {
-    font-size: 300%;
-    text-shadow: 0 0 0.15em #c0c0c09c, 0 0 0.15em #c0c0c09c;
+    font-size: 110%;
+    text-shadow: 0 0 0.3em #c0c0c09c, 0 0 0.3em #c0c0c09c;
     padding: 0;
-    text-align: center;
+    color: #ac6e66;
+}
+
+#filme-texto ion-card-subtitle {
+    font-size: 130%;
+    padding: 0;
 }
 
 /* #filme-texto ion-card-subtitle {
@@ -32,7 +38,7 @@
     object-fit: cover;
     user-select: none;
     pointer-events: none;
-    mask-image: linear-gradient(to left, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 75%);
+    /* mask-image: linear-gradient(to left, rgb(0, 0, 0) 50%, rgba(0, 0, 0, 0) 75%); */
     object-position: center center;
     border: 0;
     opacity: 0;
@@ -47,13 +53,12 @@
     }
 }
 
-#filme-capa-mask {
+/* #filme-capa-mask {
     position: absolute;
     width: 100%;
     height: 100%;
-    /* background-color: black; */
     z-index: 1;
     background: linear-gradient(to right, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0) 50%);
-}
+} */
 
 

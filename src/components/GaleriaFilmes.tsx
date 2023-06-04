@@ -1,6 +1,5 @@
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonGrid, IonImg, IonLabel, IonRow, IonThumbnail, useIonViewDidEnter } from "@ionic/react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg, IonThumbnail } from "@ionic/react";
+import { useState } from "react";
 import FilmeModel from "./FilmeModel";
 import "./GaleriaFilmes.css";
 
@@ -38,12 +37,11 @@ const GaleriaFilmes = (props: any) => {
     }
 
     return (
-        <IonCard id="card-filme" target="_self">
+        <IonCard>
+            <IonImg id="filme-imagem" src={capaSlide} onIonImgDidLoad={(e) => exibirImagem(e.target as HTMLIonImgElement)} />
+            {/*ALTERAR O MÉTODO: FADES DEVEM SER FEITOS NO SWIPER  e  providenciar -> onIonError */}
             <IonCardHeader id="filme-texto">
-                <IonCardTitle
-                    id="filme-title"
-                    style={{ fontFamily: filme.font }}
-                >
+                <IonCardTitle id="filme-title" style={{ fontFamily: filme.font }}>
                     {filme.titulo}
                 </IonCardTitle>
                 <IonCardSubtitle>
@@ -52,19 +50,29 @@ const GaleriaFilmes = (props: any) => {
                     })}
                 </IonCardSubtitle>
             </IonCardHeader>
-            <IonThumbnail>
-                <IonImg
-                    id="filme-capa"
-                    src={capaSlide}
-                    onIonImgDidLoad={(e) =>
-                        exibirImagem(e.target as HTMLIonImgElement)
-                    }
-                    // ALTERAR O MÉTODO: FADES DEVEM SER FEITOS NO SWIPER
-                />
-                {/* providenciar -> onIonError */}
-            </IonThumbnail>
         </IonCard>
     );
 };
 
 export default GaleriaFilmes;
+
+{/* <IonImg
+id="filme-capa"
+src={capaSlide}
+onIonImgDidLoad={(e) =>
+    exibirImagem(e.target as HTMLIonImgElement)
+}
+/>
+<IonCardHeader id="filme-texto">
+<IonCardTitle
+id="filme-title"
+style={{ fontFamily: filme.font }}
+>
+{filme.titulo}
+</IonCardTitle>
+<IonCardSubtitle>
+{filme.generos.map((genero, index) => {
+    return genero + "\u00A0\u00A0\u00A0";
+})}
+</IonCardSubtitle>
+</IonCardHeader> */}

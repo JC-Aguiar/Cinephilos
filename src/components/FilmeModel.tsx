@@ -1,6 +1,7 @@
 import Duração from "./Duração";
 
 export enum GenerosEnum {
+    FADA = "Fada Marinha",
     DRAMA = "DRAMA",
     TRAGEDIA = "TRAGÉDIA",
     HUMOR = "HUMOR",
@@ -17,24 +18,6 @@ export enum GenerosEnum {
     CLASSICO ="CLÁSSICO",
     ROMANCE = "ROMANCE",
     CULT = "CULT",
-    //MAKING_OFF
-    //REALITY_SHOW
-    // "DRAMA",
-    // "TRAGÉDIA",
-    // "HUMOR",
-    // "COMEDIA",
-    // "CASO_REAL",
-    // "DOCUMENÁRIO",
-    // "AÇÃO",
-    // "INESTIGAÇÃO",
-    // "FICÇÃO",
-    // "FANTASIA",
-    // "BIBLICO",
-    // "MUSICAL",
-    // "TERROR",
-    // "CLASSICO",
-    // "ROMANCE",
-    // "CULT",
 }
 
 export enum RoteiroEnum {
@@ -83,7 +66,7 @@ interface FilmeInterface {
     readonly id: number;
     readonly titulo: string;
     readonly sinopse: string;
-    readonly generos: GenerosEnum[];
+    readonly generos: string[];
     readonly dataLancamento: Date;
     readonly diretores: string[];
     readonly produtores: string[];
@@ -113,7 +96,7 @@ class FilmeModel implements FilmeInterface {
         readonly id: number,
         readonly titulo: string,
         readonly sinopse: string,
-        readonly generos: GenerosEnum[],
+        readonly generos: string[],
         readonly dataLancamento: Date,
         readonly diretores: string[],
         readonly produtores: string[],

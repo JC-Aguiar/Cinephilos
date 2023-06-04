@@ -74,7 +74,7 @@ http://ionicframework.com/docs/theming/ */
    */
 
   body {
-    --ion-color-primary: #0077ff;
+    --ion-color-primary: #ac6e66;
     --ion-color-primary-rgb: 34, 36, 40;
     --ion-color-primary-contrast: #ffffff;
     --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -189,10 +189,10 @@ http://ionicframework.com/docs/theming/ */
    */
 
   .md body {
-    --ion-background-color: linear-gradient(#000000, #080808, #222020, #494444, #000000);
+    --ion-background-color: linear-gradient(white, white, #efebe1);
     --ion-background-color-rgb: 18,18,18;
 
-    --ion-text-color: #ffffffaa;
+    --ion-text-color: #523f4b;
     --ion-text-color-rgb: 255,255,255;
 
     --ion-border-color: #222222;
@@ -224,7 +224,7 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-tab-bar-background: #1f1f1f;
 
-    --ion-card-background: #1e1e1e;
+    --ion-card-background: #efebe1;
   }
 
   .menu-panel {
@@ -234,11 +234,26 @@ http://ionicframework.com/docs/theming/ */
 
 
   #menu {
-    --ion-item-background: linear-gradient(
-        -45deg, #00003955, #00005555, #0f0f5055, #56286655, #36195c55, #00005555, #0f0f5055, #5f297555, #00005555, #00003955
-    );
     border: 0;
     margin: 0;
+  }
+
+  .pagina {
+    /* border: 4px solid blue; */
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    height: 100%;
+    padding-right: 10vw;
+    padding-left: 10vw;
+    /* margin-right: 50px; */
+    /* margin-left: 50px; */
+    /* right: 10%; */
+    /* left: 10%; */
+    /* width: 90%; */
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
   }
 
   ion-accordion.accordion.item {
