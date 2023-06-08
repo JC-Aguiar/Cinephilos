@@ -3,7 +3,8 @@
     padding-top: 0;
     margin-top: 0;
     width: 100%;
-    /* font-size: calc(4px + 30%); */
+    position: absolute;
+    /* font-size: calc(4px + .3vh + .3vw); */
     text-shadow: 0px 0px 0.55em #c0c0c09c, 0px 0px 0.55em #c0c0c09c;
 }
 .session-buttons:hover {

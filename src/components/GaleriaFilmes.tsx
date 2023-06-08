@@ -1,7 +1,6 @@
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonImg, IonThumbnail } from "@ionic/react";
 import { useState } from "react";
 import FilmeModel from "./FilmeModel";
-import "./GaleriaFilmes.css";
 
 const GaleriaFilmes = (props: any) => {
     const filme = new FilmeModel(

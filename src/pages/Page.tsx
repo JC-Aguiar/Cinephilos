@@ -1,11 +1,12 @@
-import { IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonLabel, IonMenuButton, IonPage, IonRow, IonTitle, IonToolbar, ScrollDetail, useIonViewDidEnter } from '@ionic/react';
-import { useParams } from 'react-router';
+import { IonButton, IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonMenu, IonMenuButton, IonMenuToggle, IonPage, IonRow, IonTitle, IonToolbar, ScrollDetail, useIonViewDidEnter } from '@ionic/react';
+import { useLocation, useParams } from 'react-router';
 import GaleriaFilmes from '../components/GaleriaFilmes';
 import Duração from '../components/Duração';
-import './Page.css';
 import FilmeModel, { ClassificaçãoEnum, EpocaEnum, EsteticaEnum, GenerosEnum, RoteiroEnum } from '../components/FilmeModel';
 import { useState } from 'react';
-import { filterCircle, filterOutline, filterSharp, menuOutline } from 'ionicons/icons';
+import { bookOutline, bookSharp, carSportOutline, carSportSharp, filmOutline, filmSharp, filterCircle, filterOutline, filterSharp, heartHalfOutline, heartHalfSharp, menuOutline, rocketOutline, rocketSharp, roseOutline, roseSharp } from 'ionicons/icons';
+import Acount from '../components/Acount';
+import Menu from '../components/Menu';
 
 // import { Swiper, SwiperSlide } from "swiper/react/swiper-react.js";
 // import { Grid, Pagination } from "swiper";
@@ -19,13 +20,40 @@ import { filterCircle, filterOutline, filterSharp, menuOutline } from 'ionicons/
 // import "@ionic/react/css/ionic-swiper.css";
 // import axios from 'axios';
 
+interface AppPage {
+    url: string;
+    iosIcon: string;
+    mdIcon: string;
+    title: string;
+}
+
+
+const appPages: AppPage[] = [
+    { title: "Novidades", url: "/news", iosIcon: filmOutline, mdIcon: filmSharp },
+    { title: "Perfumes", url: "/perfumes", iosIcon: carSportOutline, mdIcon: carSportSharp },
+    { title: "Notas", url: "/notas", iosIcon: roseOutline, mdIcon: roseSharp },
+    { title: "Perfumistas", url: "/perfumistas", iosIcon: heartHalfOutline, mdIcon: heartHalfSharp },
+    { title: "Forum", url: "/forum", iosIcon: bookOutline, mdIcon: bookSharp },
+    { title: "Sobre", url: "/sobre", iosIcon: rocketOutline, mdIcon: rocketSharp },
+];
+
 const Page = (props: any) => {
     const { name } = useParams<{ name: string }>();
-    const page = props.page === "" ? "Todos" : props.page;
+    const page = props.page === "" ? "Novidades" : props.page; // TODO: trocar "Novidades" pela referência ao objeto/valor 
     const itemCard = [{ x: Number, y: Number, w: Number, h: Number }];
     const [cards, setCards] = useState(itemCard);
     const [altura, setAltura] = useState(0);
     const [scroll, setScroll] = useState(0);
+
+    const location = useLocation();
+    // const loadMovie = () => endpoint(28);
+
+    function pageSelection(title: string) {
+        const callBack = props.callBack;
+        callBack(title);
+    }
+
+
     const filmeExemplo: FilmeModel = {
         id: 1,
         titulo: "TIARE - PERFUME BOTÂNICO 50ML",
@@ -78,51 +106,29 @@ const Page = (props: any) => {
         // preloadImagens();
     });
 
-    // Dividir o array em grupos de tamanho específico
-    // const chunkArray = (array: FilmeModel[], size: number) => {
-    //     const chunks: FilmeModel[][] = [];
-    //     for(let i = 0; i < array.length; i += size) {
-    //         chunks.push(array.slice(i, i + size));
-    //     }
-    //     return chunks;
-    // };
-
-    // Dividindo o array de cards em grupos de 4
-    // const cardGroups: FilmeModel[][] = chunkArray(filmes, 4);
-
     return (
         <IonPage>
-            
-            <IonHeader>
-                <IonToolbar>
-                    <IonMenuButton slot="start" autoHide={true}></IonMenuButton>
-                </IonToolbar>
-            </IonHeader>
-
             <IonContent
+                color='light'
                 fullscreen={true}
                 scrollEvents={true}
                 onIonScroll={(e) => scrollHandler(e)}
             >
-                <IonFab className='filtro' vertical="top" horizontal="end" slot="fixed">
-                    <IonFabButton>
-                        <IonIcon icon={filterOutline}/>
-                    </IonFabButton>
-                </IonFab>
                 <div className='pagina'>
                     <div id="mini-logo" />
-                    <h1>
-                        <div id="pagina-titulo-reflexo">{page}</div>
-                        <div id="pagina-titulo">{page}</div>
-                    </h1>
-                    <IonGrid className='galeria ion-padding'>
-                            <IonRow className="ion-align-items-stretch">
-                                {filmes.map((card, colIndex) => (
-                                    <IonCol key={colIndex} size='12' sizeMd='6' sizeLg='4' class="ion-align-self-center">
-                                        <GaleriaFilmes conteudo={card} num={colIndex} />
-                                    </IonCol>
-                                ))}
-                            </IonRow>
+                    <IonGrid>
+                        <IonRow className="ion-align-items-stretch">
+                            <IonCol >
+                                <h1>{page}</h1>
+                            </IonCol>
+                        </IonRow>
+                        <IonRow className="ion-align-items-stretch">
+                            {filmes.map((card, colIndex) => (
+                                <IonCol key={colIndex} size='12' sizeMd='4' sizeLg='3' class="ion-align-self-center">
+                                    <GaleriaFilmes conteudo={card} num={colIndex} />
+                                </IonCol>
+                            ))}
+                        </IonRow>
                     </IonGrid>
                 </div>
             </IonContent>

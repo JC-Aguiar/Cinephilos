@@ -1,4 +1,4 @@
-import { IonApp, IonMenuToggle, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonViewDidEnter, useIonViewWillEnter } from '@ionic/react';
+import { IonApp, IonContent, IonMenuToggle, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonViewDidEnter, useIonViewWillEnter } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/Menu';
@@ -49,25 +49,28 @@ const App: React.FC = () => {
     // });
 
     function rotasDeAcesso() {
-        if(boasVindas) {
-            return(
-                <IonSplitPane contentId="main" when={false} >
-                    <Menu callBack={(newPage: string) => setPage(newPage)}  />
-
-                    <IonRouterOutlet id="main">
-                        <Route path="/news"          exact><Page page={page}/></Route>
-                        <Route   path="/perfumes"    exact><Page page={page}/></Route>
-                        <Route   path="/notas"       exact><Page page={page}/></Route>
-                        <Route   path="/perfumistas" exact><Page page={page}/></Route>
-                        <Route   path="/forum"       exact><Page page={page}/></Route>
-                        <Route   path="/sobre"       exact><Page page={page}/></Route>
-                        <Route><Redirect to="/perfumes" /></Route>
-                    </IonRouterOutlet>
-                </IonSplitPane>
+        if (boasVindas) {
+            return (
+                <>
+                    {/* <IonSplitPane contentId="main" when={false} > */}
+                    <Menu callBack={(newPage: string) => setPage(newPage)} />
+                    <IonContent>
+                        <IonRouterOutlet id="main">
+                            <Route path="/news" exact><Page page={page} /></Route>
+                            <Route path="/perfumes" exact><Page page={page} /></Route>
+                            <Route path="/notas" exact><Page page={page} /></Route>
+                            <Route path="/perfumistas" exact><Page page={page} /></Route>
+                            <Route path="/forum" exact><Page page={page} /></Route>
+                            <Route path="/sobre" exact><Page page={page} /></Route>
+                            <Route><Redirect to="/perfumes" /></Route>
+                        </IonRouterOutlet>
+                    </IonContent>
+                    {/* </IonSplitPane> */}
+                </>
             );
         }
         else {
-            return(<>
+            return (<>
                 <Route path="/intro" exact><Intro callBack={animationEnd} /></Route>
                 <Redirect from='/*' to="/intro" />
             </>);
